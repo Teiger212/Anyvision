@@ -21,12 +21,7 @@ class SearchListContainer extends Component {
     };
 
     changeFilter = (e) => {
-        let newFilter = this.state.filter.slice();
-        newFilter = e.target.value;
-        
-        this.setState({
-          filter: newFilter
-        });
+        this.setState({ filter: e.target.value });
     }
     
     keyPress = (e) => {
@@ -78,6 +73,8 @@ class SearchListContainer extends Component {
         }
     }
 
+
+
     render() {
         const searchListEl = (
             <SearchList
@@ -96,7 +93,7 @@ class SearchListContainer extends Component {
                 </Modal>
                 <Input
                     filter={this.state.filter}
-                    changed={(event) => this.changeFilter(event)}
+                    changed={(e) => this.changeFilter(e)}
                     search={(e) => this.search(this.state.filter)}
                     keyPress={(e) => this.keyPress(e)} />
 
