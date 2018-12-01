@@ -11,11 +11,12 @@ import Input from '../../components/Input/Input';
 import SearchList from './SearchList/SearchList';
 import ToggleTop from '../../components/ToggleTop/ToggleTop';
 import HistoryList from '../../components/History/HistoryList';
-
+import Modal from '../../components/UI/Modal/Modal';
 class SearchListContainer extends Component {
     state = {
         filter: '',
         searchResults: null,
+        inputError: false,
         isTopSearches: false,
     };
 
@@ -31,25 +32,23 @@ class SearchListContainer extends Component {
     keyPress = (e) => {
         if (e.keyCode === 13) {
             this.search(e.target.value);
-        } else {
-            console.log('ELSE')
         }
     }
     
     search = async(value: string) => {
         if (!value.length) {
-            return;
-        }
-
-        const data = {term: value.trim().toLowerCase()};
+            this.setState({inputError: true});
+        } else {
+            const data = {term: value.trim().toLowerCase()};
         
-        try {
-          const response = await axios.get(`/searchItem/${data.term}`);
-          
-          this.props.onSearch(response.data.data);
-        }
-        catch(e) {
-          console.log(e);
+            try {
+              const response = await axios.get(`/searchItem/${data.term}`);
+              
+              this.props.onSearch(response.data.data);
+            }
+            catch(e) {
+              console.log(e);
+            }
         }
     }
     
@@ -61,9 +60,11 @@ class SearchListContainer extends Component {
     }
 
     navigateToResultItemHandler = (track) => {
-        console.log(`routing to app/item/${track.trackId}`);
-
         this.props.history.push('/item/' + track.trackId, track);
+    }
+
+    modalCancelHandler = () => {
+        this.setState({inputError: false})
     }
 
     topSearches = async() => {
@@ -90,6 +91,9 @@ class SearchListContainer extends Component {
 
         return (
             <Wrapper>
+                <Modal show={this.state.inputError} modalClosed={this.modalCancelHandler}>
+                    <p>Can't search nothing</p>
+                </Modal>
                 <Input
                     filter={this.state.filter}
                     changed={(event) => this.changeFilter(event)}
