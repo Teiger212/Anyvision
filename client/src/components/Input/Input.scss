@@ -1,0 +1,39 @@
+@import '../../styles/palette.scss';
+
+.input {
+    width: 60%;
+    margin: 1em auto;
+    
+    .text-box {
+        vertical-align: middle;
+        width: calc(100% - 42px);
+        height: 42px;
+        line-height: 42px;
+        margin: 1em auto;
+        padding: 0 1em;
+        outline: 0;
+        border: 0;
+        border-radius: 4px 0 0 4px;
+    }
+    .search-button {
+        vertical-align: middle;
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        outline: 0;
+        background: none;
+        background-color: $primary;
+        text-align: center;
+        line-height: 42px;
+        border: 0;
+        color: #FFF;
+        font-size: 16px;
+        text-rendering: auto;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+        transition: background-color .5s ease;
+        border-radius: 0 4px 4px 0;
+    }
+    .search-button:hover {
+        background-color: $accent;
+    }
+}

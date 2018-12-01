@@ -1,0 +1,63 @@
+@import '../../styles/palette.scss';
+
+.search-item {
+    cursor: pointer;
+    border: 3px solid $primary;
+    color: $secondary-text;
+    background-color: #fff;
+    width: 220px;
+    height: 220px;
+    margin: 0.75em;
+    text-align: start;
+    border-radius: 10%;
+    box-shadow: 0px 0px 16px 0px $parimary-opacity;
+
+    &-video-image {
+        height: 100%;
+        border: 1px solid transparent;
+        border-radius: 20px;
+        padding: .2em;
+        background-color: #ccc;
+        overflow: hidden;
+        position: relative;
+
+        img {
+            position: absolute;
+            left: -50%;
+            height: 100%;
+        }
+    }
+}
+
+.middle {
+    background-color: rgba(0, 0, 0, 0.3);
+    transition: .5s ease;
+    opacity: 0;
+    position: relative;
+    bottom: 18px;
+    height: 40px;
+    left: 50%;
+    width: 220px;
+    border: 1px solid transparent;
+    border-radius: 0 0 22px 22px;
+    transform: translate(-50%, -50%);
+    text-align: center;
+
+    .desc {
+        padding: 6px;
+        display: block;
+        color: #fff;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+}
+
+.search-item:hover {
+    .search-item-video-image {
+        opacity: 0.6;
+    }
+    .middle {
+        opacity: 1;
+    }
+}
