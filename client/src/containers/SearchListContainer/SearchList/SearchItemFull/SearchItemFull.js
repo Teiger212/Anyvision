@@ -11,9 +11,7 @@ class SearchItemFull extends Component {
     }
     
     render() {
-        
         const item = this.props.location.state;
-        console.log(item);
 
         return (
             <div>

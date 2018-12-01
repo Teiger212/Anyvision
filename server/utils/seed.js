@@ -22,7 +22,6 @@ History.find({}, (err, res) => {
         artists.forEach(artist => {
             History.create(artist)    
             .then(res => {
-                console.log(res);
                 console.log(`${artist.value} added to db`);
             })
             .catch(e => {

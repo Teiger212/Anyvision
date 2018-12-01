@@ -1,22 +1,21 @@
 import * as routes from './index';
 
 class Routes {
-
-	constructor(app, mongoDB){
+  constructor(app, mongoDB) {
     this.app = app;
-    this.mongoDB = mongoDB
+    this.mongoDB = mongoDB;
   }
 
   appRoutes() {
-       const app = this.app;
-        
-        this.app.use('/searchHistory', routes.searchHistory);
-        this.app.use('/searchItem', routes.searchItem)
-    }
+    const app = this.app;
 
-    routesConfig(){
-		this.appRoutes();
-	}
+    this.app.use('/searchHistory', routes.searchHistory);
+    this.app.use('/searchItem', routes.searchItem);
+  }
+
+  routesConfig() {
+    this.appRoutes();
+  }
 }
 
 module.exports = Routes;

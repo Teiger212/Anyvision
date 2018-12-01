@@ -9,7 +9,6 @@ const historyList = (props) => {
     let message = <p>No history</p>
 
     if (props.items) {
-        console.log(props.items)
         const rows = props.items.map(item => {
             return (
                 <tr key={item.value}>
